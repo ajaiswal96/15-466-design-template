@@ -2,7 +2,7 @@
 <!-- NOTE: the string 'TODO' appears everywhere you need to fill in information. -->
 <html>
 <head>
-<title>TODO:Title For Your Game</title>
+<title>Confused Snake</title>
 <!-- NOTE: this CSS sets up the ".figure" class to center images, and instructs images in ".figure"s to have space around them and to render crisp pixel edges when scaled [e.g. for retina displays]. -->
 <style>
 .figure {
@@ -15,25 +15,57 @@
 </style>
 </head>
 <body>
-<h1>TODO: Title For Your Game</h1>
-<p>TODO: one-sentence summary of your game, highlighting the unique "hook" of the game.</p>
+<h1>Confused Snake</h1>
+<p>Like Snake, but with speed boosts and a random emtry potal after hitting a boundary.</p>
 <!-- the <div> wrapping this image centers it on the page. -->
-<!-- TODO: drawing showing the main view of the game during play -->
+
 <div class="figure">
-<img src="game.png" />
+<img src="snake_game_480.png" />
 </div>
-<p>TODO: more information (2-3 sentences) about gameplay, referring to the image above.</p>
+<p>This game is a modified version of the classic snake game, played on a 10x10 board,
+	viewed directly from above. In the traditional game, when the sanke's head reaches a boundary,
+	it continues moving with the same velocity from the opposite wall. In this version,
+	a random portal is generated on the map whenever the snake reaches emerges from a previous portal, and reaching
+	a boundary results in the snake's head emerging from this portal with the same velocity as before.
+	When the snake 'eats' a fruit on the map, it beocmes longer, and eating a speed boost causes the speed of the snake to double until a fruit is eaten.</p>
 
 <h2>Gameplay</h2>
-<p>TODO: Describe how the game starts, plays (e.g. what are the controls), and ends.</p>
-<!-- TODO: illustrate your descriptions with more drawings -->
+<p>START: Upon start, the snake has a length of 1, and just consists of a head. The starting position of the snake is chosen at random anywhere in the grid.
+	The positions of the portal and the fruit are also chosen at random to be anywhere on the grid.
+	The speed boost may or may not be present; There is a thirty percent chance that it will be present on the map every time a fruit is eaten. The position for the portal, whenever it appears is also chosen at random.
+</p>
 <div class="figure">
-<img src="before-reset.png" />
-<img src="after-reset.png" />
+	<img src="snake_starting_480.png" />
 </div>
 
+<p>
+	MOVEMENT: W-A-S-D controls are used to move the snake. The snake moves in the selected direction with a constant speed, and only changes direction when another key is pressed for a different direction.
+	The movement is discretized so it's always moving in either a purely horizontal or purely vertical motion.
+<p>
+
+	<p> GAME: Once if the snake eats a fruit, an extra segment of length 1 is appended to the tail, and a new fruit is generated somewhere on the map. The players score increases by 1 when this happens.
+		When the snake crosses a speed boost, the speed increases to double the current speed and stays that way until a fruit is eaten again.
+		Once a boundary is crossed, the snake head appears from the portal and continues with the same velocity as before.
+		The game keeps going until the head of the snake touches another part of the snake. The image below depicts a snake going through the portal by going through the boundary wall on the left edge.
+</p>
+<div class="figure">
+<img src="snake_portal_480.png" />
+</div>
+<p>
+	GOAL: The goal of the game is to get as many points as possible before the snake collides into itself and the game ends.
+</p>
+<p>
+	ENDING: The game ends once the snake head intersects a point in the snake body, in which case a 'Game Over' screen appears and the game is reset back to the start. Thus the snake is reset back to having legnth 1 and the portal, fruit, and speed boosts are randomely chosen again.
+	If the current score is greater than the highs core, then the high score gets updated. The current score gets set back to zero.
+</p>
+<p>
+	DRAWING: The game is going to stay true to original snake and be displayed as a top down 2d view with no tilt in any axis. The current score will be displayed on the top right of the screen, and the high score will be on the top left of the screen.
+</p>
+
 <h2>Assets</h2>
-<p>TODO: Provide a link to any preliminary 3D models, sounds, or <a href="https://github.com/ixchow/amoeba-escape/blob/master/tiles.png">textures</a> for the game. Make sure to only link to assets with appropriate licenses.</p>
+<p>Some textures such as the snake and fruit can be pulled from these <a href="https://cosme.itch.io/snake">textures</a>,
+	although a more simplistic and less blocky look would be preferred, so ideally custom textures would be used.
+</p>
 
 </body>
 </html>
